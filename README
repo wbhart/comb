@@ -1,0 +1,49 @@
+Combinators in C
+================
+
+This is a sketch of parser combinators in C (plus some hacks).
+
+The idea is that we build up a function that parses a given grammar putting "combinators" together.
+
+We only define a few combinators here:
+
+* And( comb1, comb2 ) : constructs the combinator which parses comb1 followed by comb2
+
+* Or ( comb1, comb2 ) : constructs the combinators which parses comb1 or comb2
+
+* Lloop ( comb1, comb2 ) : constructs the combinator which parses a list of comb1's separated by comb2's; this combinator is for use when comb2 parses a left associative operator (such as '+')
+
+We also have some functions for parsing literals:
+
+* Integer() : constructs a combinator which parses an integer
+
+* Match( str ) : constructs the combinator which accepts the string str
+
+* Expect( str, err ) : constructs the combinator which accepts the string, str,  if present, else it prints the given error mesage, err, and aborts
+
+The combinators are themselves defined using closures, i.e. structs which contain a function to call, plus data which is to be passed to that function (in this case, other combinators).
+
+Warning: there are many things missing in this code. For example there is no garbage collection, so the code leaks memory. Also combinators for options and lists are not present.
+
+Calc
+====
+
+The Calc program is a very simple example of how to use the combinators.
+
+To build it, simply type make. To run it, type ./calc.
+
+You can evaluate simple expressions involving:
+
+* Integers (unsigned at present)
+
+* +, -, *, /
+
+* parentheses ()
+
+CTRL-D to quit.
+
+E.g.
+
+> 1 + (2*3-4+5)*7;
+50
+
