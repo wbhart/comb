@@ -3,7 +3,7 @@ Combinators in C
 
 This is a sketch of parser combinators in C (plus some hacks).
 
-The idea is that we build up a function that parses a given grammar putting "combinators" together.
+The idea is that we build up a function that parses a given grammar by putting "combinators" together.
 
 We only define a few combinators here:
 
