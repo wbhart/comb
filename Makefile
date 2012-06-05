@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O2 -g
+CFLAGS=-O2
 
 all: combinator.o calc.c
 	$(CC) $(CFLAGS) calc.c combinator.o -o calc
