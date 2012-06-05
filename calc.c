@@ -29,6 +29,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ast_t * eval(ast_t * a)
 {
+   if (a == NULL)
+      exception("missing operand\n");
+  
    switch (a->typ)
    {
    case T_INT:

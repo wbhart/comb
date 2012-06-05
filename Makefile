@@ -7,3 +7,5 @@ all: combinator.o calc.c
 combinator.o: combinator.c combinator.h
 	$(CC) $(CFLAGS) -c combinator.c -o combinator.o
 
+clean:
+	rm -f combinator.o calc
